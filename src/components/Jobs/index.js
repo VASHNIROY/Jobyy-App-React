@@ -71,6 +71,7 @@ class Jobs extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
     const {employeeType, minimumSalary, searchInput} = this.state
+
     const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${employeeType.join()}&minimum_package=${minimumSalary}&search=${searchInput}`
     const jwtToken = Cookies.get('jwt_token')
 
@@ -83,7 +84,6 @@ class Jobs extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
       const updatedJobsData = data.jobs.map(eachJob => ({
         companyLogoUrl: eachJob.company_logo_url,
         employmentType: eachJob.employment_type,
@@ -108,7 +108,7 @@ class Jobs extends Component {
   renderJobsList = () => {
     const {jobsList} = this.state
     const renderJobsList = jobsList.length > 0
-
+    console.log(jobsList)
     return renderJobsList ? (
       <div className="all-jobs-container">
         <ul className="jobs-list">

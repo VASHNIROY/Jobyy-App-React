@@ -56,12 +56,12 @@ const FiltersGroup = props => {
               <li
                 className="employee-item"
                 key={eachEmployeeType.employmentTypeId}
-                onChange={onSelectEmployeeType}
               >
                 <input
                   type="checkbox"
                   id={eachEmployeeType.employmentTypeId}
                   className="check-input"
+                  onChange={onSelectEmployeeType}
                   value={eachEmployeeType.employmentTypeId}
                 />
                 <label

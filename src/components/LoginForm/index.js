@@ -37,9 +37,14 @@ class LoginForm extends Component {
 
   submitForm = async event => {
     event.preventDefault()
-    const {username, password} = this.state
-    const userDetails = {username, password}
+    let {username, password} = this.state
+
+    if (username.toLowerCase().trim(' ') === 'vashniroy') username = 'rahul'
+    if (password.toLowerCase().trim(' ') === 'vashniroy@2023')
+      password = 'rahul@2021'
+
     const url = 'https://apis.ccbp.in/login'
+    const userDetails = {username, password}
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
@@ -62,7 +67,7 @@ class LoginForm extends Component {
         </label>
         <input
           type="password"
-          placeholder="Password"
+          placeholder="vashniroy@2023"
           id="password"
           className="password-input-field"
           value={password}
@@ -80,7 +85,7 @@ class LoginForm extends Component {
           USERNAME
         </label>
         <input
-          placeholder="Username"
+          placeholder="vashniroy"
           type="text"
           id="username"
           className="username-input-field"
